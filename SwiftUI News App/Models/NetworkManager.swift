@@ -30,11 +30,16 @@ class NetWorkManager: ObservableObject {
                 print(error as Any)
             } else {
                 if let safeData = data {
+//                    print("\nTESTING, data:\n")
+//                    print(String(data: safeData, encoding: .utf8))
+                    
                     let decoder = JSONDecoder()
                     let results = try! decoder.decode(Results.self, from: safeData)
+                    
+                    
                     DispatchQueue.main.async {
                         self.posts = results.value
-//                        print(("Success updating UI"))
+//                      print(("Success updating UI"))
                     }
                 }
                 
